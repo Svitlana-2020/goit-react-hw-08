@@ -16,7 +16,7 @@ const contactFormSchema = Yup.object({
     name: Yup.string().min(3, "Too Short!").max(10, "Too Long!").required("Required"),
     password: Yup.
     string().min(3, "Too Short!").max(8, "Too Long!").required("Required"),
-    email:Yup.string().email("Invalid email address").required("Required"),
+    email: Yup.string().email("Invalid email address").required("Required"),
 })
 
 const handleSubmit = (values, { resetForm }) => {

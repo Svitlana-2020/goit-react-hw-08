@@ -1,12 +1,16 @@
-import css from '../components/ContactForm.module.css'
+// import css from '../components/ContactForm.module.css'
+
+import Navigation from "../components/Navigation"
+
 const HomePage = () => {
 
-const nameId = crypto.randomUUID();
-const numberId = crypto.randomUUID();
+// const nameId = crypto.randomUUID();
+// const numberId = crypto.randomUUID();
 
     return (
     <div>
-        <p>Home</p>
+<Navigation />;
+        {/* <p>Home</p>
         <p>Register</p>
         <p>Log In</p>
         <form className={css.form}>
@@ -20,7 +24,7 @@ const numberId = crypto.randomUUID();
        
       
        <button type="submit" className={css.button}>Log In</button>
-       </form>
+       </form> */}
     </div>
 )}
 

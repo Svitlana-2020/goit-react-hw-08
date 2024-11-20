@@ -15,7 +15,7 @@ const emailId = crypto.randomUUID();
 const contactLoginSchema = Yup.object({
     password: Yup.
     string().min(3, "Too Short!").max(8, "Too Long!").required("Required"),
-    email:Yup.string().email().required("Required"),
+    email: Yup.string().email("Invalid email address").required("Required"),
 })
 
 const handleSubmit = (values, { resetForm }) => {

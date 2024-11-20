@@ -8,20 +8,21 @@ const Navigation = () => {
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(selectisLoggedIn);
     const userData = useSelector(selectUserData);
+    console.log(userData)
 
     const onLogOut = () => {
         dispatch(ApiLogOut);
     }
 
     return (
-        <header>
+        <div>
             <NavLink className={css.nav} to="/">
             Home
             </NavLink>
             {isLoggedIn ? (
                 <div>
                     <span>
-                        Welcome,${userData}
+                        Welcome,`${userData}`
                     </span>
                     <button type="button" onClick={onLogOut}>
                         Log Out
@@ -36,10 +37,7 @@ const Navigation = () => {
             Log In
             </NavLink> 
             </> }
-            {/* <NavLink className={css.nav} to="/contacts">
-            Contacts
-            </NavLink> */}
-        </header>
+        </div>
     )    }
 
     export default Navigation

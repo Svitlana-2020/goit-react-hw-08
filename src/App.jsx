@@ -27,7 +27,7 @@ console.log(contacts)
 
   return (
     <>
-    <Navigation/>
+    {/* <Navigation/> */}
     <Suspense fallback={<div>Loading...</div>}>
     <Routes>
     <Route path="/" element={<HomePage/>} />
