@@ -1,5 +1,5 @@
 import css from '../components/ContactForm.module.css'
-export const HomePage = () => {
+const HomePage = () => {
 
 const nameId = crypto.randomUUID();
 const numberId = crypto.randomUUID();
@@ -23,3 +23,5 @@ const numberId = crypto.randomUUID();
        </form>
     </div>
 )}
+
+export default HomePage

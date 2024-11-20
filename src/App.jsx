@@ -36,7 +36,7 @@ console.log(contacts)
  
     <Route path="/contacts" element={<PrivateRoute component={<ContactsPage/>}/>} >
 
-    <Route path="/list" element={
+    <Route path="list" element={
 <>
       {isLoading && <p>Loading</p>}
       {error && <p>an error occurred</p>}      
@@ -44,8 +44,8 @@ console.log(contacts)
  </>   
       }/>
 
-    <Route path="/newcontact" element={<PrivateRoute component={<ContactForm/>}/>} />
-    <Route path="/search" element={<PrivateRoute component={<SearchBox />} />} />
+    <Route path="newcontact" element={<PrivateRoute component={<ContactForm/>}/>} />
+    <Route path="search" element={<PrivateRoute component={<SearchBox />} />} />
     </Route>
     </Routes>
     </Suspense>

@@ -6,7 +6,7 @@ export const authInstance = axios.create({
 })
 
 export const setToken = (token) => {
-authInstance.defaults.headers.Authorization = 'Bearer:${token}';
+authInstance.defaults.headers.Authorization = `bearer ${token}`;
 };
 
 export const clearToken = () => {
@@ -17,6 +17,7 @@ export const clearToken = () => {
 export const ApiCreateUser = createAsyncThunk('auth/register', async (formData, thunkApi)=> {
 try {
     const {data} = await authInstance.post("/users/signup", formData)
+    console.log(formData)
     setToken(data.token)
     return data;
 } catch (err) {
