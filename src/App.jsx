@@ -10,6 +10,7 @@ import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from "react";
 import Navigation from './components/Navigation'
 import PrivateRoute from './components/PrivateRoute.jsx';
+import RestrictedRoute from './components/RestrictedRoute.jsx'
 
 const HomePage = lazy(() => import('./pages/HomePage.jsx'))
 const LoginPage = lazy(() => import('./pages/LoginPage.jsx'))
@@ -30,8 +31,8 @@ console.log(contacts)
     <Suspense fallback={<div>Loading...</div>}>
     <Routes>
     <Route path="/" element={<HomePage/>} />
-    <Route path="/login" element={<LoginPage/>} />
-    <Route path="/register" element={<RegistrationPage/>} />
+    <Route path="/login" element={<RestrictedRoute component={<LoginPage/>}/>} />
+    <Route path="/register" element={<RestrictedRoute component={<RegistrationPage/>}/>} />
  
     <Route path="/contacts" element={<PrivateRoute component={<ContactsPage/>}/>} >
 
