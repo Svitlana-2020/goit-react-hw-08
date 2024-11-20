@@ -1,0 +1,8 @@
+.nav {
+    display: flex;
+    justify-content: start;
+    gap: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    color: blue;
+  }
