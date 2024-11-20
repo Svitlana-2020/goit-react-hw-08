@@ -2,7 +2,7 @@ import { Suspense, useEffect } from "react";
 import { useDispatch } from "react-redux"
 import { fetchContacts } from "../redux/contacts/operations";
 import { NavLink, Outlet } from "react-router-dom";
-import css from './components/Header.module.css'
+import css from '../components/Header.module.css'
 // import ContactList from "../components/ContactList";
 
 const ContactsPage =() => {

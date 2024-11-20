@@ -3,10 +3,12 @@ import css from '../components/ContactForm.module.css';
 import * as Yup from "yup";
 import { useDispatch } from 'react-redux';
 import { ApiLogIn } from '../redux/auth/operations';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
 
 const dispatch = useDispatch();
+const navigate = useNavigate();
 
 const passwordId = crypto.randomUUID();
 const emailId = crypto.randomUUID();
@@ -26,7 +28,18 @@ const handleSubmit = (values, { resetForm }) => {
       resetForm()
   };
 
+const handleGoBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1); 
+    } else {
+      navigate("/"); 
+    }
+  };
+
     return (
+        <>
+        <button type="button" className={css.button} onClick={handleGoBack}>
+      Go back</button>
 <Formik initialValues = {{
     email: "",
     password: "",
@@ -51,6 +64,6 @@ const handleSubmit = (values, { resetForm }) => {
 </Form>
 
 </Formik>
-    )}
+    </>)}
 
 export default LoginPage
