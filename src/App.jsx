@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
-import ContactForm from './components/ContactForm'
-import ContactList from './pages/ContactList.jsx'
-import SearchBox from './components/SearchBox'
+// import ContactForm from './components/ContactForm'
+// import ContactList from './pages/ContactList.jsx'
+// import SearchBox from './components/SearchBox'
 import { selectContacts, selectError, selectIsLoading } from './redux/contacts/selectors.js'
 import { useEffect } from 'react'
 // import { fetchContacts } from './redux/contacts/operations.js'
@@ -23,8 +23,8 @@ function App() {
   const dispatch = useDispatch();
   // useEffect (() => {dispatch(fetchContacts())}, [dispatch])
   useEffect (() => {dispatch(ApiRefreshUser())}, [dispatch])
-const isLoading = useSelector(selectIsLoading);
-const error = useSelector(selectError);
+// const isLoading = useSelector(selectIsLoading);
+// const error = useSelector(selectError);
 const contacts = useSelector(selectContacts);
 console.log(contacts)
 
@@ -37,13 +37,8 @@ console.log(contacts)
     <Route path="/login" element={<RestrictedRoute component={<LoginPage/>}/>} />
     <Route path="/register" element={<RestrictedRoute component={<RegistrationPage/>}/>} />
  
-    <Route path="/contacts" element={<PrivateRoute component={<ContactsPage/>}/>} >
+    <Route path="/contacts" element={<PrivateRoute component={<ContactsPage/>}/>} />
 
-    <Route path="list" element={<PrivateRoute component={<ContactList />}/>}/>
-
-    <Route path="newcontact" element={<PrivateRoute component={<ContactForm/>}/>} />
-    <Route path="search" element={<PrivateRoute component={<SearchBox />} />} />
-    </Route>
     </Routes>
     </Suspense>
     </>
@@ -55,3 +50,9 @@ export default App
 // {isLoading && <p>Loading</p>}
 // {error && <p>an error occurred</p>}      
 // {contacts.length > 0 && 
+
+
+// <Route path="list" element={<PrivateRoute component={<ContactList />}/>}/>
+
+// <Route path="newcontact" element={<PrivateRoute component={<ContactForm/>}/>} />
+// <Route path="search" element={<PrivateRoute component={<SearchBox />} />} />

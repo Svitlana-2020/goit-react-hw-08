@@ -15,7 +15,7 @@ try {
 
 export const addContact = createAsyncThunk ('contact/addContact', async (contact, thunkApi) => {
     try {
-        const {data} = await authInstance.post(`/contacts`, contact)
+        const {data} = await authInstance.post('/contacts', contact)
         return data
     } catch (err) {
         return thunkApi.rejectWithValue(err.message) 

@@ -1,67 +1,63 @@
 import css from './ContactForm.module.css'
-// import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useDispatch } from 'react-redux';
-// import * as Yup from "yup";
+import * as Yup from "yup";
 import { addContact } from '../redux/contacts/operations';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const ContactForm = () => {
-    const [query, setQuery] = useState({username: '', number: ''});
+    // const [query, setQuery] = useState({username: '', number: ''});
     const dispatch = useDispatch();
 
-
-    const handleChange = (evt) => {
-        const { name, value } = evt.target;
-        setQuery(prevState => ({ ...prevState, [name]: value }));
-    }
-
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+  const handleSubmit = (values, {resetForm}) => {
 
 const contact = {
-    name: query.username,
-    phone: query.number,
+    name: values.username,
+    phone: values.number,
 };
 
     dispatch(addContact(contact));
-    setQuery({username: '', number: ''});
+    console.log(contact)
+    resetForm()
+    // setQuery({username: '', number: ''});
   };
 
 
 const nameId = crypto.randomUUID();
 const numberId = crypto.randomUUID();
 
-// const contactFormSchema = Yup.object({
-//     username: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
-//     number: Yup.string()
-//     .matches(/^\d{3}-\d{3}-\d{4}$/, "Invalid phone number format")
-//     .required("Required")
-// })
+const contactFormSchema = Yup.object({
+    username: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
+    number: Yup.string()
+    .matches(/^\d{3}-\d{2}-\d{2}$/, "Invalid phone number format")
+    .required("Required")
+})
 
     return (
-        // <Formik initialValues = {{
-        //     username: "",
-        //     number: "",
-        //         }}   
+        <Formik initialValues = {{
+            username: "",
+            number: "",
+                }}   
 
-        //         onSubmit={handleSubmit}
+                onSubmit={handleSubmit}
 
-        //         validationSchema={contactFormSchema}
-        //         >
+                validationSchema={contactFormSchema}
+                >
 
-        <form className={css.form} onSubmit={handleSubmit}>
+        <Form className={css.form}>
            
             <label htmlFor={nameId} className={css.label}>Name</label>
-        <input type="text" name="username" className={css.name} id={nameId} value={query.username} onChange={handleChange}></input>
-     
+        <Field type="text" name="username" className={css.name} id={nameId}></Field>
+        <ErrorMessage name="username" component="span" className={css.error} />
                 
             <label htmlFor={numberId} className={css.label}>Number</label>
-        <input type="text" name="number" className={css.name} id={numberId} value={query.number} onChange={handleChange}></input>
-        
+        <Field type="text" name="number" className={css.name} id={numberId}></Field>
+        <ErrorMessage name="number" component="span" className={css.error} />
        
         <button type="submit" className={css.button}>Add contact</button>
-        </form>
-
+        </Form>
+        
+        </Formik>
             )}
 
 
