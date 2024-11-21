@@ -5,12 +5,14 @@ import ContactList from './pages/ContactList.jsx'
 import SearchBox from './components/SearchBox'
 import { selectContacts, selectError, selectIsLoading } from './redux/contacts/selectors.js'
 import { useEffect } from 'react'
-import { fetchContacts } from './redux/contacts/operations.js'
+// import { fetchContacts } from './redux/contacts/operations.js'
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from "react";
-import Navigation from './components/Navigation'
+// import Navigation from './components/Navigation'
 import PrivateRoute from './components/PrivateRoute.jsx';
 import RestrictedRoute from './components/RestrictedRoute.jsx'
+import { ApiRefreshUser } from './redux/auth/operations.js'
+
 
 const HomePage = lazy(() => import('./pages/HomePage.jsx'))
 const LoginPage = lazy(() => import('./pages/LoginPage.jsx'))
@@ -19,7 +21,8 @@ const RegistrationPage = lazy(() => import('./pages/RegistrationPage.jsx'))
 
 function App() {
   const dispatch = useDispatch();
-  useEffect (() => {dispatch(fetchContacts())}, [dispatch])
+  // useEffect (() => {dispatch(fetchContacts())}, [dispatch])
+  useEffect (() => {dispatch(ApiRefreshUser())}, [dispatch])
 const isLoading = useSelector(selectIsLoading);
 const error = useSelector(selectError);
 const contacts = useSelector(selectContacts);
@@ -36,13 +39,7 @@ console.log(contacts)
  
     <Route path="/contacts" element={<PrivateRoute component={<ContactsPage/>}/>} >
 
-    <Route path="list" element={
-<>
-      {isLoading && <p>Loading</p>}
-      {error && <p>an error occurred</p>}      
-      {contacts.length > 0 && <PrivateRoute component={<ContactList />}/>}
- </>   
-      }/>
+    <Route path="list" element={<PrivateRoute component={<ContactList />}/>}/>
 
     <Route path="newcontact" element={<PrivateRoute component={<ContactForm/>}/>} />
     <Route path="search" element={<PrivateRoute component={<SearchBox />} />} />
@@ -54,3 +51,7 @@ console.log(contacts)
 }
 
 export default App
+
+// {isLoading && <p>Loading</p>}
+// {error && <p>an error occurred</p>}      
+// {contacts.length > 0 && 

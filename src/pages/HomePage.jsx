@@ -11,23 +11,23 @@ const HomePage = () => {
 
     const dispatch = useDispatch();
     const userData = useSelector(selectUserData);
+    console.log(userData)
 
-    const onLogOut = () => {
-        dispatch(ApiLogOut);
-    }
-// const nameId = crypto.randomUUID();
-// const numberId = crypto.randomUUID();
+    // const onLogOut = () => {
+    //     dispatch(ApiLogOut);
+    // }
 const isLoggedIn = useSelector(selectisLoggedIn);
+console.log(isLoggedIn)
 
     return (
     <div>
 <Navigation />
 {isLoggedIn ? (<>
                 <div>
-                        <p>Welcome, `${userData}`</p>
+                        <p>Welcome, {userData.name}</p>
                     
                     {<ContactsPage />}
-                    <button type="button" onClick={onLogOut}>
+                    <button type="button" onClick={() => dispatch(ApiLogOut())}>
                         Log Out
                     </button>
                 </div> 

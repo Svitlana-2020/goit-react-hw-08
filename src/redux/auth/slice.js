@@ -25,8 +25,8 @@ const authSlice = createSlice({
     state.loading = false;
     state.isLoggedIn = true;
     state.token = payload.token;
-    state.user.name = payload.name;
-    state.user.email = payload.email;
+    state.user = payload.user;
+    
 })
 
 .addCase(ApiCreateUser.rejected, (state, {payload}) => {
@@ -43,8 +43,8 @@ const authSlice = createSlice({
   state.loading = false;
   state.isLoggedIn = true;
   state.token = payload.token;
-    state.user.name = payload.name;
-    state.user.email = payload.email;
+    state.user = payload.user;
+    
 })
 
 .addCase(ApiLogIn.rejected, (state, {payload}) => {
@@ -60,8 +60,8 @@ const authSlice = createSlice({
 .addCase(ApiRefreshUser.fulfilled, (state, {payload}) => {
   state.isRefreshing = false;
   state.isLoggedIn = true;
-    state.user.name = payload;
-    state.user.email = payload;
+    state.user = payload;
+    
 })
 
 .addCase(ApiRefreshUser.rejected, (state, {payload}) => {
@@ -74,8 +74,10 @@ const authSlice = createSlice({
   state.error = null;
 })
 
-.addCase(ApiLogOut.fulfilled, () => {
-return initialState;
+.addCase(ApiLogOut.fulfilled, (state) => {
+  state.user = { name: null, email: null };
+  state.token = null;
+  state.isLoggedIn = false;
 })
 
 .addCase(ApiLogOut.rejected, (state, {payload}) => {

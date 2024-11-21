@@ -17,17 +17,17 @@ const ContactsPage =() => {
             <Suspense fallback={<div>Loading page...</div>}>
         <nav className={css.list}>
           <li className={css.item}>
-          <NavLink to="list" className={css.nav}>
+          <NavLink to="/list" className={css.nav}>
             Contact List
             </NavLink>
           </li>
           <li className={css.item}>
-          <NavLink to="newcontact" className={css.nav}>
+          <NavLink to="/newcontact" className={css.nav}>
            Add a contact
             </NavLink>
           </li>
           <li className={css.item}>
-          <NavLink to="search" className={css.nav}>
+          <NavLink to="/search" className={css.nav}>
            Find a contact
             </NavLink>
           </li>
