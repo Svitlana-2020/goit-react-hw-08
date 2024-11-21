@@ -1,30 +1,21 @@
 import { NavLink } from "react-router-dom"
-import css from '../components/Header.module.css'
-// import {  useSelector } from "react-redux"
-// import { selectUserData } from "../redux/auth/selectors";
-// import { ApiLogOut } from "../redux/auth/operations";
+import css from '../components/Navigation.module.css'
+import ContactsPage from "../pages/ContactsPage"
+import { useSelector } from "react-redux"
+import { selectisLoggedIn } from "../redux/auth/selectors"
+
 
 const Navigation = () => {
-    // const dispatch = useDispatch();
-    // const isLoggedIn = useSelector(selectisLoggedIn);
-    // const userData = useSelector(selectUserData);
-    // console.log(userData)
 
-    // const onLogOut = () => {
-    //     dispatch(ApiLogOut);
-    // }
+    const isLoggedIn = useSelector(selectisLoggedIn);
 
     return (
         <div>
             <NavLink className={css.nav} to="/">
             Home
             </NavLink>
-            <NavLink className={css.nav} to="/register">
-            Register
-            </NavLink>
-            <NavLink className={css.nav} to="/login">
-            Log In
-            </NavLink> 
+            {isLoggedIn && 
+                    <ContactsPage/> }
         </div>
     )    }
 

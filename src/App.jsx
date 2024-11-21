@@ -1,10 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
-// import ContactForm from './components/ContactForm'
-// import ContactList from './pages/ContactList.jsx'
-// import SearchBox from './components/SearchBox'
-import { selectContacts, selectError, selectIsLoading } from './redux/contacts/selectors.js'
+import { selectContacts } from './redux/contacts/selectors.js'
 import { useEffect } from 'react'
+import { Layout } from './components/Layout.jsx'
 // import { fetchContacts } from './redux/contacts/operations.js'
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from "react";
@@ -32,13 +30,15 @@ console.log(contacts)
     <>
     {/* <Navigation/> */}
     <Suspense fallback={<div>Loading...</div>}>
+
     <Routes>
-    <Route path="/" element={<HomePage/>} />
+    <Route path="/" element={<Layout />}>
+    <Route index element={<HomePage/>} />
     <Route path="/login" element={<RestrictedRoute component={<LoginPage/>}/>} />
     <Route path="/register" element={<RestrictedRoute component={<RegistrationPage/>}/>} />
  
     <Route path="/contacts" element={<PrivateRoute component={<ContactsPage/>}/>} />
-
+</Route>
     </Routes>
     </Suspense>
     </>

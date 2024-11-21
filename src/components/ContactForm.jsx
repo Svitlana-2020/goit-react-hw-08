@@ -13,7 +13,7 @@ const ContactForm = () => {
 
 const contact = {
     name: values.username,
-    phone: values.number,
+    number: values.number,
 };
 
     dispatch(addContact(contact));

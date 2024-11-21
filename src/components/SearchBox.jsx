@@ -10,7 +10,7 @@ const SearchBox =() => {
 
     const handleFilter = (e) => {
         const inputValue = e.target.value;
-        dispatch(changeFilter(inputValue));
+        dispatch(changeFilter({ name: inputValue, number: inputValue }));
       };
 
    return (<div className={css.wrapper}>

@@ -5,7 +5,7 @@ import SearchBox from '../components/SearchBox'
 
 // import {ContactForm} from '../components/ContactForm'
 // import { NavLink, Outlet } from "react-router-dom";
-import css from '../components/Header.module.css'
+import css from '../components/Navigation.module.css'
 import ContactList from "../components/ContactList";
 import ContactForm from "../components/ContactForm";
 // import ContactList from "../components/ContactList";
