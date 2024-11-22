@@ -4,7 +4,6 @@ const slice = createSlice({
   name: "filters",
   initialState: {
 	  name: "",
-    number: "",
   },
   reducers: {
     changeFilter(state, {payload}) {

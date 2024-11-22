@@ -9,7 +9,7 @@ export const UserMenu = () => {
 
   return (
     <div className={css.wrapper}>
-      <p className={css.username}>Welcome, {userData.name}</p>
+      <p className={css.username}>Welcome, {userData.name}, to your Contact Page </p>
       <button type="button" onClick={() => dispatch(ApiLogOut())}>
         Logout
       </button>

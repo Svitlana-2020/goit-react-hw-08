@@ -5,10 +5,11 @@ import SearchBox from '../components/SearchBox'
 
 // import {ContactForm} from '../components/ContactForm'
 // import { NavLink, Outlet } from "react-router-dom";
-import css from '../components/Navigation.module.css'
+
+import css from '../components/UserMenu.module.css'
 import ContactList from "../components/ContactList";
 import ContactForm from "../components/ContactForm";
-// import ContactList from "../components/ContactList";
+import { UserMenu } from "../components/UserMenu";
 
 const ContactsPage =() => {
     const dispatch = useDispatch();
@@ -19,10 +20,12 @@ const ContactsPage =() => {
 
     return (
         <div>
-<p>Your contacts</p>
+<div className={css.contactWrap}>
+    <UserMenu />
 <SearchBox/>
 <ContactList/>
 < ContactForm />
+</div>
         </div>
     )
 }

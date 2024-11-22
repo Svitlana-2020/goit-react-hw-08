@@ -10,6 +10,7 @@ import { lazy, Suspense } from "react";
 import PrivateRoute from './components/PrivateRoute.jsx';
 import RestrictedRoute from './components/RestrictedRoute.jsx'
 import { ApiRefreshUser } from './redux/auth/operations.js'
+import { selectisLoggedIn } from './redux/auth/selectors.js'
 
 
 const HomePage = lazy(() => import('./pages/HomePage.jsx'))
@@ -25,6 +26,7 @@ function App() {
 // const error = useSelector(selectError);
 const contacts = useSelector(selectContacts);
 console.log(contacts)
+const isLoggedIn = useSelector(selectisLoggedIn);
 
   return (
     <>
@@ -33,7 +35,7 @@ console.log(contacts)
 
     <Routes>
     <Route path="/" element={<Layout />}>
-    <Route index element={<HomePage/>} />
+    <Route index element={!isLoggedIn && <HomePage/>} />
     <Route path="/login" element={<RestrictedRoute component={<LoginPage/>}/>} />
     <Route path="/register" element={<RestrictedRoute component={<RegistrationPage/>}/>} />
  

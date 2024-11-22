@@ -1,4 +1,4 @@
-// import css from '../components/ContactForm.module.css'
+import css from '../components/ContactForm.module.css'
 
 // import { useSelector } from "react-redux";
 // import Navigation from "../components/Navigation"
@@ -9,27 +9,13 @@
 
 const HomePage = () => {
 
-    // const dispatch = useDispatch();
-    // const userData = useSelector(selectUserData);
 
-
-    // const onLogOut = () => {
-    //     dispatch(ApiLogOut);
-    // }
-// const isLoggedIn = useSelector(selectisLoggedIn);
-// console.log(isLoggedIn)
 
     return (
-    <div>
+    <div className={css.title}>
 Welcome to Contact Page!
     </div>
     )}
 
 export default HomePage
 
-// <Navigation />
-// {isLoggedIn ? (
-//                 <div>
-//                         <p>Hello, {userData.name}</p>
-//                 </div> )
-//                  : <AuthNav /> }
