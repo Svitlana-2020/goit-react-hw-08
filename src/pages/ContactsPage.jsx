@@ -9,7 +9,7 @@ import SearchBox from '../components/SearchBox'
 import css from '../components/UserMenu.module.css'
 import ContactList from "../components/ContactList";
 import ContactForm from "../components/ContactForm";
-import { UserMenu } from "../components/UserMenu";
+// import { UserMenu } from "../components/UserMenu";
 
 const ContactsPage =() => {
     const dispatch = useDispatch();
@@ -21,7 +21,6 @@ const ContactsPage =() => {
     return (
         <div>
 <div className={css.contactWrap}>
-    <UserMenu />
 <SearchBox/>
 <ContactList/>
 < ContactForm />
